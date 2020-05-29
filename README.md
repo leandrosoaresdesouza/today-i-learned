@@ -15,7 +15,7 @@ variety of languages and technologies.
 
 ### JavaScript
 
-- [Debounce](javascript/debounce.md)
+- [Debounce](javascript/debounce)
 
 ## About
 
