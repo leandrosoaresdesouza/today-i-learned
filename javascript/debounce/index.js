@@ -15,20 +15,20 @@ myInput.addEventListener("input", () => {
 
 // creating a debounce function
 
-// function debounce(func, wait) {
-//   let timer = null;
-//   return function () {
-//     clearTimeout(timer);
-//     timer = setTimeout(func, wait);
-//   };
-// }
+function debounce(func, wait) {
+  let timer = null;
+  return function () {
+    clearTimeout(timer);
+    timer = setTimeout(func, wait);
+  };
+}
 
-// myInput.addEventListener(
-//   "input",
-//   debounce(function () {
-//     mySpan.innerText = ++counter;
-//   }, 500)
-// );
+myInput.addEventListener(
+  "input",
+  debounce(function () {
+    mySpan.innerText = ++counter;
+  }, 500)
+);
 
 // where i learned:
 // https://www.treinaweb.com.br/blog/o-que-e-debounce-e-qual-sua-importancia-para-a-performance/

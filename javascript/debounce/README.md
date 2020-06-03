@@ -1,31 +1,41 @@
 # Debounce
 
-Some languages, such as Ruby, have a built in range constraint that makes it
-easy to construct an array of values from 1 to N. JavaScript is not one of
-those languages. Nevertheless, if you don't mind the aesthetics, you can get
-away with something like this:
+Debouncing in javascript is used to improve the browser performance. There might be some functionality in web page that requires time-consuming computations, an example is a search engine that sends request on every keydown. Deboucing is a programming practice used to ensure that time-consuming tasks do not fire so often, that is stalls the perfoemance of the web page. In other words, it limits the rate at which a function gets invoked
+Simple example:
 
 ```javascript
-> Array.apply(null, {length: 10}).map(Number.call, Number);
-=> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+const myInput = document.querySelector("input");
+const mySpan = document.querySelector("span");
+
+let counter = 0;
+let timer = null;
+
+myInput.addEventListener("input", () => {
+  clearTimeout(timer);
+
+  timer = setTimeout(() => {
+    mySpan.innerText = `Number of events ${counter++}`;
+  }, 500);
+});
 ```
 
-That gives us `0` through `9`. To get `1` through `10`, we can tweak it
-slightly:
+Creating a debounce function:
 
 ```javascript
-> Array.apply(null, {length: 10}).map(Number.call, n => Number(n) + 1);
-=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+function debounce(func, wait) {
+  let timer = null;
+  return function () {
+    clearTimeout(timer);
+    timer = setTimeout(func, wait);
+  };
+}
+
+myInput.addEventListener(
+  "input",
+  debounce(function () {
+    mySpan.innerText = ++counter;
+  }, 500)
+);
 ```
 
-To generalize this, we can replace `10` with `N` and then just expect that
-`N` will be defined somewhere:
-
-```javascript
-> var N = 10;
-=> undefined
-> Array.apply(null, {length: N}).map(Number.call, n => Number(n) + 1);
-=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-```
-
-[Source](https://www.treinaweb.com.br/blog/o-que-e-debounce-e-qual-sua-importancia-para-a-performance/)
+[Where I Learned](https://www.treinaweb.com.br/blog/o-que-e-debounce-e-qual-sua-importancia-para-a-performance/)
