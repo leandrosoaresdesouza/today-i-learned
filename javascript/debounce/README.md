@@ -1,6 +1,9 @@
 # Debounce
 
-Debouncing in javascript is used to improve the browser performance. There might be some functionality in web page that requires time-consuming computations, an example is a search engine that sends request on every keydown. Deboucing is a programming practice used to ensure that time-consuming tasks do not fire so often, that is stalls the perfoemance of the web page. In other words, it limits the rate at which a function gets invoked
+Debouncing in javascript is used to improve the browser performance. There might be some functionality in web page that requires time-consuming computations, an example is an input, (like search engine) that sends request on every keydown. Deboucing is a programming practice used to ensure that time-consuming tasks do not requested so often, that is stalls the performance of the web page. In other words, it limits the rate at which a function gets invoked.
+
+The code below shows that the function named timer is executed 500ms after that the user stop to type.
+
 Simple example:
 
 ```javascript
