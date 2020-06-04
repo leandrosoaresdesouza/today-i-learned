@@ -16,6 +16,7 @@ variety of languages and technologies.
 ### JavaScript
 
 - [Debounce](javascript/debounce)
+- [Destructuring The Rest Of An Array](javascript/destructuring-the-rest-of-an-array)
 
 ## About
 
